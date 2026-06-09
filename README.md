@@ -17,8 +17,8 @@ which generally come with their instructions in the notes.
 Copy into `/opt/Autodesk/shared/python` - if Flame was already running,
 use **Rescan Python Hooks** from the **Flame** > **Python** menu.
 
-Select one or more nodes in Batch/BFX, right-click, and run Remove Notes
-from the Node Tools menu near the bottom.
+Select one or more nodes in Batch/BFX, right-click, and run **Remove Notes**
+from the **Node Tools** menu near the bottom.
 
 You can also assign a hotkey to Remove Notes to make it even easier.
 While in Batch/BFX, go to the **Flame** menu > **Keyboard Shortcuts**
