@@ -1,5 +1,5 @@
 # Remove Node Notes by Bob Maple
-# VER: 2026-06-10
+# VER: 2026-10-06
 #
 # Removes any notes on selected (or all) Batch nodes. That's it!
 # See the 'Node Tools' context menu in Batch and/or assign it to a hotkey
@@ -20,9 +20,19 @@ def get_batch_custom_ui_actions():
 
         for curThing in sel:
             if( isinstance(curThing, flame.PyNode) ):
-                if( curThing.note.get_value() ):
-                    curThing.note.set_value("")
-                    node_count += 1
+
+                # >= 2027.2 new notes system
+                if( hasattr( curThing, "notes" ) ):
+                    if( len( curThing.notes ) ):
+                        curThing.clear_notes();
+                        node_count += 1
+
+                # <= 2027.1 old note system
+                else:
+                    if( hasattr( curThing, "note" ) ):
+                        if( curThing.note.get_value() ):
+                            curThing.note.set_value("")
+                            node_count += 1
 
         tmp_msg = "Removed " + str( node_count ) + " node note" + ("" if node_count == 1 else "s")
         flame.messages.show_in_console( tmp_msg, "info", 4 )
